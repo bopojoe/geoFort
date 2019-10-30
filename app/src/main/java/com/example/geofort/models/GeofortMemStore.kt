@@ -36,6 +36,10 @@ class GeofortMemStore : GeofortStore, AnkoLogger {
         }
     }
 
+    override fun delete(geofort: GeofortModel) {
+        geoforts.remove(geofort)
+    }
+
     fun logAll() {
         geoforts.forEach { info("${it}") }
     }

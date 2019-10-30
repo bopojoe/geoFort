@@ -30,6 +30,7 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
     var location = Location(52.245696, -7.139102, 30f)
 
     lateinit var app: MainApp
+
     var edit = false;
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -85,6 +86,13 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
 
         chooseImage.setOnClickListener {
             showImagePicker(this, IMAGE_REQUEST)
+
+        }
+
+        geofortDelete.setOnClickListener{
+            app.geoforts.delete(geofort)
+            finish()
+            toast("deleted")
         }
 
 

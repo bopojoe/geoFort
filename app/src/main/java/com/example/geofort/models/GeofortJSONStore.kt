@@ -53,6 +53,12 @@ class GeofortJSONStore : GeofortStore, AnkoLogger {
         }
     }
 
+    override fun delete(geofort: GeofortModel) {
+            geoforts.remove(geofort)
+            serialize()
+        }
+
+
     private fun serialize() {
         val jsonString = gsonBuilder.toJson(geoforts, listType)
         write(context, JSON_FILE, jsonString)

@@ -70,6 +70,19 @@
                     android:textSize="14sp"/>
 
                 <Button
+                    android:id="@+id/geofortDelete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@color/colorAccent"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:stateListAnimator="@null"
+                    android:text="@string/button_delete"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"/>
+
+                <Button
                     android:id="@+id/geofortLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -98,8 +111,7 @@
                 <ImageView
                     android:id="@+id/geofortImageList"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/sym_def_app_icon" />
+                    android:layout_height="wrap_content" />
 
                 <Button
                     android:id="@+id/btnAdd"

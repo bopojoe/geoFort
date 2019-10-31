@@ -17,4 +17,6 @@
     <string name="change_location">Change Location</string>
 
     <string name="title_activity_map">Map</string>
+    <string name="title_activity_login">Login</string>
+
 </resources>

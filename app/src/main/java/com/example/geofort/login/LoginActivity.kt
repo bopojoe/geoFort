@@ -1,5 +1,7 @@
 package com.example.geofort.login
 
+
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -74,7 +76,6 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
 
 
     private fun signIn(email: String, password: String) {
-        // [START sign_in_with_email]
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -102,6 +103,13 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
             }
 
     }
+
+
+    override fun onBackPressed() {
+        toast("Please log back in to view previous page")
+
+    }
+
 
 
 }

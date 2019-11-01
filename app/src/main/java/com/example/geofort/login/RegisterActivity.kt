@@ -61,6 +61,8 @@ class RegisterActivity: AppCompatActivity(), AnkoLogger {
                     val profileUpdates = UserProfileChangeRequest.Builder()
                         .setDisplayName(userName).build()
                     user.updateProfile(profileUpdates)
+                    auth.signOut()
+
                     toast("success $user")
 
                     val intentRegister = Intent(this@RegisterActivity, LoginActivity::class.java)

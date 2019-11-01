@@ -41,7 +41,9 @@ class GeofortListActivity : AppCompatActivity(), GeofortListener {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.item_add -> startActivityForResult<GeofortActivity>(0)
-            R.id.logout -> {auth.signOut();  val intentLogin= Intent(this@GeofortListActivity, LoginActivity::class.java)
+
+            R.id.logout -> {auth.signOut(); app.currentuser = "";  val intentLogin= Intent(this@GeofortListActivity, LoginActivity::class.java)
+
                 startActivity(intentLogin)}
         }
         return super.onOptionsItemSelected(item)

@@ -10,16 +10,19 @@
 
     <item android:id="@+id/settings"
             android:icon="@drawable/ic_settings"
-            android:title="Settings"
+
+            android:title="@string/title_icon_settings"
+
             app:showAsAction="ifRoom" />
 
         <item android:id="@+id/help"
             android:icon="@drawable/ic_up"
-            android:title="Back"
+            android:title="@string/title_icon_back"
             app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/logout"
-        android:icon="@drawable/ic_logout"
-        android:title="Logout"
+        android:icon="@drawable/logout"
+        android:title="@string/title_icon_logout"
+
         app:showAsAction="ifRoom"/>
 </menu>

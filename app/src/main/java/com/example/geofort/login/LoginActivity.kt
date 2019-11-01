@@ -1,5 +1,6 @@
 package com.example.geofort.login
 
+
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -103,10 +104,12 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
 
     }
 
+
     override fun onBackPressed() {
         toast("Please log back in to view previous page")
 
     }
+
 
 
 }

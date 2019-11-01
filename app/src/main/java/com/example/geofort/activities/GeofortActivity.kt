@@ -60,7 +60,7 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
             startActivityForResult(intentFor<MapActivity>().putExtra("location", location), LOCATION_REQUEST)
         }
 
-
+   
 
         chooseImage.setOnClickListener {
             showImagePicker(this, IMAGE_REQUEST)

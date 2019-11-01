@@ -7,7 +7,7 @@
     <item
         android:drawable="@drawable/white"
         android:id="@+id/Add"
-        android:title="@string/menu_addGeofort"
+        android:title="@string/title_save"
         app:showAsAction="always"/>
     <item
         android:drawable="@drawable/white"

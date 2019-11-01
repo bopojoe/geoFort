@@ -43,13 +43,11 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
 
         app = application as MainApp
 
-        btnAdd.setText(R.string.button_addGeofort)
         if (intent.hasExtra("geofort_edit")) {
             edit = true
             geofort = intent.extras?.getParcelable<GeofortModel>("geofort_edit")!!
             geofortTitle.setText(geofort.title)
             description.setText(geofort.description)
-            btnAdd.setText(R.string.button_saveGeofort)
             chooseImage.setText(R.string.button_changeImage)
             geofortLocation.setText(R.string.change_location)
             location = Location(geofort.lat, geofort.lng, geofort.zoom)
@@ -63,27 +61,6 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
         }
 
 
-        btnAdd.setOnClickListener() {
-            geofort.userId = app.currentuser
-            geofort.title = geofortTitle.text.toString()
-            geofort.description = description.text.toString()
-            geofort.lng = location.lng
-            geofort.lat = location.lat
-            geofort.zoom = location.zoom
-            if (geofort.title.isNotEmpty()) {
-                if(edit){
-                    app.geoforts.update(geofort)
-                    info("save Button Pressed: $geofort")
-                }else{
-                    app.geoforts.create(geofort.copy())
-                    info("add Button Pressed: $geofort")
-                }
-                setResult(AppCompatActivity.RESULT_OK)
-                finish()
-            } else {
-                toast(R.string.add_emptyGeofort)
-            }
-        }
 
         chooseImage.setOnClickListener {
             showImagePicker(this, IMAGE_REQUEST)
@@ -94,7 +71,11 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        if(edit){
+            menuInflater.inflate(R.menu.menu_geofort_edit, menu)
+        }else{
         menuInflater.inflate(R.menu.menu_geofort, menu)
+        }
         return super.onCreateOptionsMenu(menu)
     }
 
@@ -105,10 +86,31 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
             R.id.item_cancel -> {
                 finish()
             }
-            R.id.delete ->{
+            R.id.delete -> {
                 app.geoforts.delete(geofort)
                 finish()
                 toast("deleted")
+            }
+            R.id.Add -> {
+                geofort.userId = app.currentuser
+                geofort.title = geofortTitle.text.toString()
+                geofort.description = description.text.toString()
+                geofort.lng = location.lng
+                geofort.lat = location.lat
+                geofort.zoom = location.zoom
+                if (geofort.title.isNotEmpty()) {
+                    if(edit){
+                        app.geoforts.update(geofort)
+                        info("save Button Pressed: $geofort")
+                    }else{
+                        app.geoforts.create(geofort.copy())
+                        info("add Button Pressed: $geofort")
+                    }
+                    setResult(AppCompatActivity.RESULT_OK)
+                    finish()
+                } else {
+                    toast(R.string.add_emptyGeofort)
+                }
             }
         }
 

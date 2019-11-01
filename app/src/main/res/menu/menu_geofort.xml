@@ -7,4 +7,9 @@
         android:id="@+id/item_cancel"
         android:title="@string/menu_cancelGeofort"
         app:showAsAction="always"/>
+    
+    <item android:id="@+id/delete"
+        android:icon="@drawable/ic_delete"
+        android:title="delete"
+        app:showAsAction="ifRoom"/>
 </menu>

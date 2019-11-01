@@ -90,12 +90,6 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
 
         }
 
-        geofortDelete.setOnClickListener{
-            app.geoforts.delete(geofort)
-            finish()
-            toast("deleted")
-        }
-
 
     }
 
@@ -110,6 +104,11 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
         when (item?.itemId) {
             R.id.item_cancel -> {
                 finish()
+            }
+            R.id.delete ->{
+                app.geoforts.delete(geofort)
+                finish()
+                toast("deleted")
             }
         }
 

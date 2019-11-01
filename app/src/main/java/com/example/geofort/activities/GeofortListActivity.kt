@@ -8,19 +8,22 @@ import kotlinx.android.synthetic.main.activity_geofort_list.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
 import com.example.geofort.R
+import com.example.geofort.login.LoginActivity
 import com.example.geofort.main.MainApp
 import com.example.geofort.models.GeofortModel
+import com.google.firebase.auth.FirebaseAuth
 
 class GeofortListActivity : AppCompatActivity(), GeofortListener {
 
     lateinit var app: MainApp
-
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_geofort_list)
         app = application as MainApp
+        auth = FirebaseAuth.getInstance()
 
         toolbar.title = title
         setSupportActionBar(toolbar)
@@ -38,6 +41,8 @@ class GeofortListActivity : AppCompatActivity(), GeofortListener {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.item_add -> startActivityForResult<GeofortActivity>(0)
+            R.id.logout -> {auth.signOut();  val intentLogin= Intent(this@GeofortListActivity, LoginActivity::class.java)
+                startActivity(intentLogin)}
         }
         return super.onOptionsItemSelected(item)
     }

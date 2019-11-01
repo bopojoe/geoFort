@@ -17,51 +17,45 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
 
-class LoginActivity : AppCompatActivity(), AnkoLogger{
+class LoginActivity : AppCompatActivity(), AnkoLogger {
 
     private lateinit var auth: FirebaseAuth
     lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_login)
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
 
 
-            auth = FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
 
-            // get reference to all views
-            var et_login_email = findViewById(R.id.login_email) as EditText
-            var et_password = findViewById(R.id.et_password) as EditText
-            var btn_reset = findViewById(R.id.btn_reset) as Button
-            var btn_login = findViewById(R.id.btn_login) as Button
-
-
-            btn_reset.setOnClickListener {
-                // clearing user_name and password edit text views on reset button click
-                et_login_email.setText("")
-                et_password.setText("")
-            }
-
-            // set on-click listener
-            btn_login.setOnClickListener {
-                val email = login_email.text.toString()
-                val password = et_password.text.toString()
-                signIn(email, password)
-
-                //Toast.makeText(this@MainActivity, user_name, Toast.LENGTH_LONG).show()
-
-                // your code to validate the user_name and password combination
-                // and verify the same
+        // get reference to all views
+        var et_login_email = findViewById(R.id.login_email) as EditText
+        var et_password = findViewById(R.id.et_password) as EditText
+        var btn_reset = findViewById(R.id.btn_reset) as Button
+        var btn_login = findViewById(R.id.btn_login) as Button
 
 
-            }
+        btn_reset.setOnClickListener {
+            // clearing user_name and password edit text views on reset button click
+            et_login_email.setText("")
+            et_password.setText("")
+        }
 
-            btn_sign_up.setOnClickListener{
-                val intentRegister = Intent(this@LoginActivity, RegisterActivity::class.java)
-                startActivity(intentRegister)
+        // set on-click listener
+        btn_login.setOnClickListener {
+            val email = login_email.text.toString()
+            val password = et_password.text.toString()
+            signIn(email, password)
+            
+        }
+
+        btn_sign_up.setOnClickListener {
+            val intentRegister = Intent(this@LoginActivity, RegisterActivity::class.java)
+            startActivity(intentRegister)
 
         }
-        }
+    }
 
 
     public override fun onStart() {
@@ -71,21 +65,15 @@ class LoginActivity : AppCompatActivity(), AnkoLogger{
         //updateUI(currentUser)
         if (currentUser != null) {
             toast("you are already logged in as $currentUser")
+            val intent = Intent(this@LoginActivity, GeofortListActivity::class.java)
+            startActivity(intent)
+        } else {
+            toast("Logged out")
         }
     }
 
 
-
-
-
     private fun signIn(email: String, password: String) {
-      //  Log.d(TAG, "signIn:$email")
-//        if (!validateForm()) {
-//            return
-//        }
-
-    //    showProgressDialog()
-
         // [START sign_in_with_email]
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
@@ -101,25 +89,19 @@ class LoginActivity : AppCompatActivity(), AnkoLogger{
 
                     }
 
-
                 } else {
-                    // If sign in fails, display a message to the user.
-                 //   Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                //    updateUI(null)
+                    Toast.makeText(
+                        baseContext, "Authentication failed.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-
-                // [START_EXCLUDE]
                 if (!task.isSuccessful) {
                     toast("unsuccessful")
-                 //   status.setText(R.string.auth_failed)
                 }
-               // hideProgressDialog()
-                // [END_EXCLUDE]
+
             }
-        // [END sign_in_with_email]
+
     }
 
 
-    }
+}

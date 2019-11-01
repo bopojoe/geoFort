@@ -7,4 +7,19 @@
         android:icon="@android:drawable/ic_menu_add"
         android:title="@string/menu_addGeofort"
         app:showAsAction="always" />
+
+    <item android:id="@+id/settings"
+            android:icon="@drawable/ic_settings"
+            android:title="Settings"
+            app:showAsAction="ifRoom" />
+
+        <item android:id="@+id/help"
+            android:icon="@drawable/ic_up"
+            android:title="Back"
+            app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/logout"
+        android:icon="@drawable/ic_logout"
+        android:title="Logout"
+        app:showAsAction="ifRoom"/>
 </menu>

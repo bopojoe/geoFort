@@ -13,6 +13,16 @@ class GeofortMemStore : GeofortStore, AnkoLogger {
 
     val geoforts = ArrayList<GeofortModel>()
 
+    override fun findAllByUser(userId: String): ArrayList<GeofortModel> {
+        var returnlist = ArrayList<GeofortModel>()
+        for (geofort in geoforts){
+            if(userId == geofort.userId){
+                returnlist.add(geofort)
+            }
+        }
+        return returnlist
+    }
+
     override fun findAll(): List<GeofortModel> {
         return geoforts
     }

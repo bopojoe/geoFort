@@ -8,9 +8,14 @@ import com.example.geofort.models.GeofortJSONStore
 import com.example.geofort.models.GeofortMemStore
 import com.example.geofort.models.GeofortModel
 import com.example.geofort.models.GeofortStore
+import com.google.firebase.auth.FirebaseUser
 import java.lang.Thread.sleep
 
-class MainApp : Application(), AnkoLogger {
+ class MainApp : Application(), AnkoLogger {
+
+     var currentuser: String = ""
+     var username: String = currentuser
+
 
     //val placemarks = ArrayList<PlacemarkModel>()
     //val placemarks = PlacemarkMemStore()

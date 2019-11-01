@@ -1,19 +1,26 @@
 package com.example.geofort.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.example.geofort.MainActivity
 import com.example.geofort.R
+import com.example.geofort.activities.GeofortActivity
+import com.example.geofort.activities.GeofortListActivity
+import com.example.geofort.main.MainApp
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
 
-class LoginActivity : AppCompatActivity(){
+class LoginActivity : AppCompatActivity(), AnkoLogger{
 
     private lateinit var auth: FirebaseAuth
-
+    lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -23,35 +30,35 @@ class LoginActivity : AppCompatActivity(){
             auth = FirebaseAuth.getInstance()
 
             // get reference to all views
-            var et_user_name = findViewById(R.id.et_user_name) as EditText
+            var et_login_email = findViewById(R.id.login_email) as EditText
             var et_password = findViewById(R.id.et_password) as EditText
             var btn_reset = findViewById(R.id.btn_reset) as Button
-            var btn_submit = findViewById(R.id.btn_submit) as Button
+            var btn_login = findViewById(R.id.btn_login) as Button
 
 
             btn_reset.setOnClickListener {
                 // clearing user_name and password edit text views on reset button click
-                et_user_name.setText("")
+                et_login_email.setText("")
                 et_password.setText("")
             }
 
             // set on-click listener
-            btn_submit.setOnClickListener {
-                val user_name = et_user_name.text.toString()
+            btn_login.setOnClickListener {
+                val email = login_email.text.toString()
                 val password = et_password.text.toString()
-                signIn(user_name, password)
+                signIn(email, password)
 
                 //Toast.makeText(this@MainActivity, user_name, Toast.LENGTH_LONG).show()
 
                 // your code to validate the user_name and password combination
                 // and verify the same
 
+
             }
 
             btn_sign_up.setOnClickListener{
-                val user_name = et_user_name.text.toString()
-                val password = et_password.text.toString()
-                createAccount(user_name, password)
+                val intentRegister = Intent(this@LoginActivity, RegisterActivity::class.java)
+                startActivity(intentRegister)
 
         }
         }
@@ -62,37 +69,13 @@ class LoginActivity : AppCompatActivity(){
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         //updateUI(currentUser)
+        if (currentUser != null) {
+            toast("you are already logged in as $currentUser")
+        }
     }
 
 
-    private fun createAccount(email: String, password: String) {
 
-
-        // [START create_user_with_email]
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-
-                    // Sign in success, update UI with the signed-in user's information
-                //    Log.d(TAG, "createUserWithEmail:success")
-                    val user = auth.currentUser
-                    toast("success $user")
-                  //  updateUI(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                  //  Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                    //updateUI(null)
-                    toast("phail")
-                }
-
-                // [START_EXCLUDE]
-               // hideProgressDialog()
-                // [END_EXCLUDE]
-            }
-        // [END create_user_with_email]
-    }
 
 
     private fun signIn(email: String, password: String) {
@@ -107,11 +90,18 @@ class LoginActivity : AppCompatActivity(){
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                 //   Log.d(TAG, "signInWithEmail:success")
-                    val user = auth.currentUser
-                    toast("success $user")
-                //    updateUI(user)
+
+                    val username = auth.currentUser!!.displayName
+                    app = application as MainApp
+                    toast("success $username")
+                    if (username != null) {
+                        app.currentuser = username
+                        val intent = Intent(this@LoginActivity, GeofortListActivity::class.java)
+                        startActivity(intent)
+
+                    }
+
+
                 } else {
                     // If sign in fails, display a message to the user.
                  //   Log.w(TAG, "signInWithEmail:failure", task.exception)

@@ -64,6 +64,7 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
 
 
         btnAdd.setOnClickListener() {
+            geofort.userId = app.currentuser
             geofort.title = geofortTitle.text.toString()
             geofort.description = description.text.toString()
             geofort.lng = location.lng
@@ -72,10 +73,10 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
             if (geofort.title.isNotEmpty()) {
                 if(edit){
                     app.geoforts.update(geofort)
-                    info("save Button Pressed: ${geofort}")
+                    info("save Button Pressed: $geofort")
                 }else{
                     app.geoforts.create(geofort.copy())
-                    info("add Button Pressed: ${geofort}")
+                    info("add Button Pressed: $geofort")
                 }
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()

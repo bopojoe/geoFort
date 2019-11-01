@@ -53,7 +53,7 @@ class GeofortListActivity : AppCompatActivity(), GeofortListener {
     }
 
     private fun loadGeoforts() {
-        showGeoforts(app.geoforts.findAll())
+        showGeoforts(app.geoforts.findAllByUser(app.currentuser))
     }
 
     fun showGeoforts (geoforts: List<GeofortModel>) {

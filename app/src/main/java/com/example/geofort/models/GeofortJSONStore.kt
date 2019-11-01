@@ -17,6 +17,15 @@ fun generateRandomId(): Long {
 }
 
 class GeofortJSONStore : GeofortStore, AnkoLogger {
+    override fun findAllByUser(userId: String): ArrayList<GeofortModel> {
+        var returnlist = ArrayList<GeofortModel>()
+        for (geofort in geoforts){
+            if(userId == geofort.userId){
+                returnlist.add(geofort)
+            }
+        }
+        return returnlist
+    }
 
     val context: Context
     var geoforts = mutableListOf<GeofortModel>()

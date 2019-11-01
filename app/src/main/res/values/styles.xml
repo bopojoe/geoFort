@@ -10,7 +10,6 @@
     </style>
 
     <style name="AppTheme.Launcher">
-        <!-- Customize your theme here. -->
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 

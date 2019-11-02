@@ -59,6 +59,7 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
         app = application as MainApp
 
         if (intent.hasExtra("geofort_edit")) {
+            info("james "+geofort.imageList)
             edit = true
             geofort = intent.extras?.getParcelable<GeofortModel>("geofort_edit")!!
             geofortTitle.setText(geofort.title)
@@ -141,8 +142,9 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
                 toast("deleted")
             }
             R.id.Add -> {
+                info("james add"+app.imageList )
                 geofort.userId = app.currentuser
-                geofort.imageList = imageList
+                geofort.imageList = app.imageList
                 geofort.title = geofortTitle.text.toString()
                 geofort.description = description.text.toString()
                 geofort.note = note.text.toString()
@@ -151,6 +153,7 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
                 geofort.lng = location.lng
                 geofort.lat = location.lat
                 geofort.zoom = location.zoom
+                info("james add"+geofort.imageList )
                 if (geofort.title.isNotEmpty()) {
                     if(edit){
                         app.geoforts.update(geofort)
@@ -184,14 +187,14 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
                     val layoutParams = LayoutParams(200, 200)
 
                     imageView.layoutParams = layoutParams
-
+                    var imageList = app.imageList
                     imageList.add(data.getData().toString())
                     imageHolder.addView(imageView,numOfImage)
-                    info(imageHolder[numOfImage].toString())
+                    info("james "+ imageList)
                     numOfImage += 1
 
                     geofort.image = data.getData().toString()
-                    geofort.imageList = imageList
+                    app.imageList = imageList
 
                 }
             }

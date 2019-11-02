@@ -13,6 +13,8 @@ import java.lang.Thread.sleep
 
  class MainApp : Application(), AnkoLogger {
 
+
+     var imageList = ArrayList<String>()
      var currentuser: String = ""
      var username: String = currentuser
 

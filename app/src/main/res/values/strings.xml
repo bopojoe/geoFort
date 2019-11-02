@@ -27,6 +27,8 @@
     <string name="title_save">Save</string>
     <string name="button_addNote"> Add Note </string>
     <string name="hint_note">Add notes here</string>
+    <string name="title_activity_user_settings">User Settings</string>
+
 
 
 

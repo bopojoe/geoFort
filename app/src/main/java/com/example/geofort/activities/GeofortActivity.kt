@@ -6,10 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.cardview.widget.CardView
-import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.activity_geofort.*
 import kotlinx.android.synthetic.main.activity_geofort.description
 import kotlinx.android.synthetic.main.activity_geofort.geofortTitle
@@ -146,6 +143,7 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
                     toast(R.string.add_emptyGeofort)
                 }
             }
+
         }
 
 

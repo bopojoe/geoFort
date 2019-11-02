@@ -16,15 +16,16 @@
         <activity
             android:name=".login.LoginActivity"
             android:label="@string/title_activity_login">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
             android:name=".login.RegisterActivity"
             android:label="@string/title_activity_register">
+        </activity>
+
+        <activity
+            android:name=".settings.UserSettingsActivity"
+            android:label="@string/title_activity_user_settings">
         </activity>
 
         <meta-data
@@ -34,11 +35,16 @@
         <activity
             android:name=".activities.MapActivity"
             android:label="@string/title_activity_map"></activity>
-        <activity android:name=".activities.GeofortActivity"
-            android:theme="@style/AppTheme"></activity>
-        <activity android:name=".activities.GeofortListActivity"
-            >
 
+        <activity android:name=".activities.GeofortActivity"
+            android:theme="@style/AppTheme">
+
+        </activity>
+        <activity android:name=".activities.GeofortListActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
     </application>

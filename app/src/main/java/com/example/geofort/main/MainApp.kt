@@ -14,7 +14,7 @@ import java.lang.Thread.sleep
  class MainApp : Application(), AnkoLogger {
 
      var currentuser: String = ""
-     var username: String = currentuser
+     var username: String = ""
 
 
     //val placemarks = ArrayList<PlacemarkModel>()

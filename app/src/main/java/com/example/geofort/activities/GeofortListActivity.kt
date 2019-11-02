@@ -11,9 +11,11 @@ import com.example.geofort.R
 import com.example.geofort.login.LoginActivity
 import com.example.geofort.main.MainApp
 import com.example.geofort.models.GeofortModel
+import com.example.geofort.settings.UserSettingsActivity
 import com.google.firebase.auth.FirebaseAuth
+import org.jetbrains.anko.AnkoLogger
 
-class GeofortListActivity : AppCompatActivity(), GeofortListener {
+class GeofortListActivity : AppCompatActivity(), GeofortListener, AnkoLogger {
 
     lateinit var app: MainApp
     private lateinit var auth: FirebaseAuth
@@ -45,6 +47,11 @@ class GeofortListActivity : AppCompatActivity(), GeofortListener {
             R.id.logout -> {auth.signOut(); app.currentuser = "";  val intentLogin= Intent(this@GeofortListActivity, LoginActivity::class.java)
 
                 startActivity(intentLogin)}
+
+            R.id.userSettings -> startActivityForResult<UserSettingsActivity>(0)//{
+               //val intentSettings = Intent(this@GeofortListActivity, UserSettingsActivity::class.java)
+               //startActivity(intentSettings)
+           // }
         }
         return super.onOptionsItemSelected(item)
     }

@@ -48,7 +48,7 @@ class GeofortListActivity : AppCompatActivity(), GeofortListener, AnkoLogger {
 
                 startActivity(intentLogin)}
 
-            R.id.userSettings -> startActivityForResult<UserSettingsActivity>(0)//{
+            R.id.user_settings -> startActivityForResult<UserSettingsActivity>(0)//{
                //val intentSettings = Intent(this@GeofortListActivity, UserSettingsActivity::class.java)
                //startActivity(intentSettings)
            // }

@@ -22,9 +22,7 @@ class UserSettingsActivity: AppCompatActivity(), AnkoLogger {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        auth = FirebaseAuth.getInstance()
-        val currentUser = auth.currentUser
-        user = currentUser!!
+
 
         buttonOne.setOnClickListener{
             toast("hello")
@@ -35,7 +33,9 @@ class UserSettingsActivity: AppCompatActivity(), AnkoLogger {
 
     override fun onStart() {
         super.onStart()
-
+        auth = FirebaseAuth.getInstance()
+        val currentUser = auth.currentUser
+        user = currentUser!!
         if(user != null) {
 
             info("james before username")

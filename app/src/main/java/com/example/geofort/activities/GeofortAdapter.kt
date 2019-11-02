@@ -45,6 +45,7 @@ class GeofortAdapter constructor(
             itemView.geofortTitle.text = geofort.title
             itemView.description.text = geofort.description
             itemView.geofortImageList.setImageBitmap(readImageFromPath(itemView.context, geofort.image))
+            itemView.visited_card.isChecked = geofort.visited
             itemView.setOnClickListener { listener.onGeofortClick(geofort) }
         }
     }

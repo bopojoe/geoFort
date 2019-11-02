@@ -57,6 +57,8 @@ class GeofortJSONStore : GeofortStore, AnkoLogger {
             foundGeofort.description = geofort.description
             foundGeofort.image = geofort.image
             foundGeofort.note = geofort.note
+            foundGeofort.date = geofort.date
+            foundGeofort.visited = geofort.visited
             foundGeofort.lat = geofort.lat
             foundGeofort.lng = geofort.lng
             foundGeofort.zoom = geofort.zoom

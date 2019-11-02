@@ -23,6 +23,9 @@ import com.example.geofort.helpers.showImagePicker
 import com.example.geofort.main.MainApp
 import com.example.geofort.models.Location
 import com.example.geofort.models.GeofortModel
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 class GeofortActivity : AppCompatActivity(), AnkoLogger {
 
@@ -51,6 +54,8 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
             geofort = intent.extras?.getParcelable<GeofortModel>("geofort_edit")!!
             geofortTitle.setText(geofort.title)
             description.setText(geofort.description)
+            visited.isChecked = geofort.visited
+            date.setText(geofort.date)
             chooseImage.setText(R.string.button_changeImage)
             geofortLocation.setText(R.string.change_location)
             location = Location(geofort.lat, geofort.lng, geofort.zoom)
@@ -76,9 +81,22 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
             textView.text = "$writing \n $newText"
             editNote.text = null
 
+        }
+        visited.setOnCheckedChangeListener { buttonView, isChecked ->
+            if(isChecked){
+            val sdf = SimpleDateFormat("dd/MM/yyyy")
+            val currentDate = sdf.format(Date())
+            date.setText(currentDate)
+            }else{
+                date.setText("")
+            }
+
 
 
         }
+
+
+
 
 
     }
@@ -109,6 +127,8 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
                 geofort.title = geofortTitle.text.toString()
                 geofort.description = description.text.toString()
                 geofort.note = note.text.toString()
+                geofort.visited = visited.isChecked
+                geofort.date = date.text.toString()
                 geofort.lng = location.lng
                 geofort.lat = location.lat
                 geofort.zoom = location.zoom

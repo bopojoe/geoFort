@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.activity_geofort.*
 import kotlinx.android.synthetic.main.activity_geofort.description
@@ -25,11 +28,17 @@ import com.example.geofort.models.Location
 import com.example.geofort.models.GeofortModel
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
+import android.widget.LinearLayout.LayoutParams
+import androidx.core.view.get
+import androidx.core.view.size
 
 
 class GeofortActivity : AppCompatActivity(), AnkoLogger {
 
     var geofort = GeofortModel()
+    var imageList = ArrayList<String>()
+    var numOfImage = 0
     val IMAGE_REQUEST = 1
 
     val LOCATION_REQUEST = 2
@@ -50,6 +59,7 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
         app = application as MainApp
 
         if (intent.hasExtra("geofort_edit")) {
+            info("james "+geofort.imageList)
             edit = true
             geofort = intent.extras?.getParcelable<GeofortModel>("geofort_edit")!!
             geofortTitle.setText(geofort.title)
@@ -60,8 +70,17 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
             geofortLocation.setText(R.string.change_location)
             location = Location(geofort.lat, geofort.lng, geofort.zoom)
             note.text = geofort.note
+            imageList = geofort.imageList
+            for(image in imageList){
+                val imageView = ImageView(this)
+                imageView.setImageBitmap(readImageFromPath(this, image))
+                val layoutParams = LayoutParams(200, 200)
+                imageView.layoutParams = layoutParams
+                val layout = findViewById<LinearLayout>(R.id.image_holder)
+                layout.addView(imageView)
+            }
             info("location $location")
-            geofortImageList.setImageBitmap(readImageFromPath(this, geofort.image))
+//            geofortImageList.setImageBitmap(readImageFromPath(this, geofort.image))
         }
 
         geofortLocation.setOnClickListener {
@@ -123,7 +142,9 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
                 toast("deleted")
             }
             R.id.Add -> {
+                info("james add"+app.imageList )
                 geofort.userId = app.currentuser
+                geofort.imageList = app.imageList
                 geofort.title = geofortTitle.text.toString()
                 geofort.description = description.text.toString()
                 geofort.note = note.text.toString()
@@ -132,6 +153,7 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
                 geofort.lng = location.lng
                 geofort.lat = location.lat
                 geofort.zoom = location.zoom
+                info("james add"+geofort.imageList )
                 if (geofort.title.isNotEmpty()) {
                     if(edit){
                         app.geoforts.update(geofort)
@@ -157,7 +179,23 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
         when (requestCode) {
             IMAGE_REQUEST -> {
                 if (data != null) {
+                    val imageHolder = findViewById<LinearLayout>(R.id.image_holder)
+
+                    val imageString = data.getData().toString()
+                    val imageView = ImageView(this)
+                    imageView.setImageBitmap(readImageFromPath(this, imageString))
+                    val layoutParams = LayoutParams(200, 200)
+
+                    imageView.layoutParams = layoutParams
+                    var imageList = app.imageList
+                    imageList.add(data.getData().toString())
+                    imageHolder.addView(imageView,numOfImage)
+                    info("james "+ imageList)
+                    numOfImage += 1
+
                     geofort.image = data.getData().toString()
+                    app.imageList = imageList
+
                 }
             }
             LOCATION_REQUEST -> {

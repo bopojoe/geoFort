@@ -2,7 +2,8 @@ package com.example.geofort.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import java.util.*
+import kotlin.collections.ArrayList
+
 
 @Parcelize
 data class GeofortModel(
@@ -11,6 +12,7 @@ data class GeofortModel(
                         var title: String = "",
                         var description: String = "",
                         var image: String = "",
+                        var imageList: ArrayList<String> = ArrayList(),
                         var note: String = "",
                         var visited: Boolean = false,
                         var date: String = "",

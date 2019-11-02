@@ -69,16 +69,12 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
         }
 
         btn_addNote.setOnClickListener {
-            val linearLayout = findViewById<LinearLayout>(R.id.geofortLayout)
+            val textView = findViewById<TextView>(R.id.textView_notes)
+            var writing = textView.text
+            var newText = editNote.text.toString()
+            textView.text = "$writing \n $newText"
+            editNote.text = null
 
-            val textView = TextView(this)
-            textView.text = editNote.text.toString()
-
-            val card = CardView(this)
-            card.addView(textView)
-
-            // Add TextView to LinearLayout
-            linearLayout?.addView(card)
 
 
         }

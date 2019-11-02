@@ -10,6 +10,7 @@ data class GeofortModel(
                         var title: String = "",
                         var description: String = "",
                         var image: String = "",
+                        var note: String = "",
                         var lat : Double = 0.0,
                         var lng: Double = 0.0,
                         var zoom: Float = 0f) : Parcelable

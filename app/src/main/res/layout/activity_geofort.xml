@@ -38,6 +38,7 @@
             android:fillViewport="true">
 
             <LinearLayout
+                android:id="@+id/geofortLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -101,8 +102,39 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
+                <EditText
+                    android:id="@+id/editNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/hint_note"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:inputType="textMultiLine" />
+
+                <Button
+                    android:id="@+id/btn_addNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:background="@color/colorAccent"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:stateListAnimator="@null"
+                    android:text="@string/button_addNote"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/note"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:ems="10"
+                    android:textSize="19sp"
+                    android:text="Notes About the Geofort" />
 
             </LinearLayout>
+
         </ScrollView>
 
     </RelativeLayout>

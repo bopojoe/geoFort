@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.cardview.widget.CardView
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.activity_geofort.*
 import kotlinx.android.synthetic.main.activity_geofort.description
@@ -51,6 +54,7 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
             chooseImage.setText(R.string.button_changeImage)
             geofortLocation.setText(R.string.change_location)
             location = Location(geofort.lat, geofort.lng, geofort.zoom)
+            note.text = geofort.note
             info("location $location")
             geofortImageList.setImageBitmap(readImageFromPath(this, geofort.image))
         }
@@ -60,10 +64,19 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
             startActivityForResult(intentFor<MapActivity>().putExtra("location", location), LOCATION_REQUEST)
         }
 
-   
-
         chooseImage.setOnClickListener {
             showImagePicker(this, IMAGE_REQUEST)
+
+        }
+
+        btn_addNote.setOnClickListener {
+            val textView = findViewById<TextView>(R.id.note)
+            var writing = textView.text
+            var newText = editNote.text.toString()
+            textView.text = "$writing \n $newText"
+            editNote.text = null
+
+
 
         }
 
@@ -95,6 +108,7 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
                 geofort.userId = app.currentuser
                 geofort.title = geofortTitle.text.toString()
                 geofort.description = description.text.toString()
+                geofort.note = note.text.toString()
                 geofort.lng = location.lng
                 geofort.lat = location.lat
                 geofort.zoom = location.zoom

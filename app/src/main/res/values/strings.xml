@@ -25,6 +25,8 @@
     <string name="title_icon_back">Back</string>
     <string name="title_icon_logout">Logout</string>
     <string name="title_save">Save</string>
+    <string name="button_addNote"> Add Note </string>
+    <string name="hint_note">Add notes here</string>
 
 
 

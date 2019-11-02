@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.cardview.widget.CardView
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.activity_geofort.*
 import kotlinx.android.synthetic.main.activity_geofort.description
@@ -60,10 +63,23 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
             startActivityForResult(intentFor<MapActivity>().putExtra("location", location), LOCATION_REQUEST)
         }
 
-   
-
         chooseImage.setOnClickListener {
             showImagePicker(this, IMAGE_REQUEST)
+
+        }
+
+        btn_addNote.setOnClickListener {
+            val linearLayout = findViewById<LinearLayout>(R.id.geofortLayout)
+
+            val textView = TextView(this)
+            textView.text = editNote.text.toString()
+
+            val card = CardView(this)
+            card.addView(textView)
+
+            // Add TextView to LinearLayout
+            linearLayout?.addView(card)
+
 
         }
 

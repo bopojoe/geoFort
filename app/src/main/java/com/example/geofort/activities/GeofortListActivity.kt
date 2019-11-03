@@ -14,6 +14,7 @@ import com.example.geofort.main.MainApp
 import com.example.geofort.models.GeofortModel
 import com.example.geofort.models.JSON_FILE
 import com.example.geofort.models.listType
+import com.example.geofort.settings.UserSettingsActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import org.jetbrains.anko.AnkoLogger
@@ -52,6 +53,11 @@ class GeofortListActivity : AppCompatActivity(), GeofortListener, AnkoLogger {
             R.id.logout -> {auth.signOut(); app.currentuser = "";  val intentLogin= Intent(this@GeofortListActivity, LoginActivity::class.java)
 
                 startActivity(intentLogin)}
+
+            R.id.user_settings -> startActivityForResult<UserSettingsActivity>(0)//{
+               //val intentSettings = Intent(this@GeofortListActivity, UserSettingsActivity::class.java)
+               //startActivity(intentSettings)
+           // }
         }
         return super.onOptionsItemSelected(item)
     }

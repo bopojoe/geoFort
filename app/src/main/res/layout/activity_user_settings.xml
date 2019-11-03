@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.geofort.settings.ChangeEmail">
+
+        <LinearLayout
+            android:id="@+id/settings_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#444444"
+            android:gravity="top"
+            android:orientation="vertical"
+            android:padding="25dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="30dp"
+                    android:text="User Information"
+                    android:textColor="#6dffbf"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="30dp"
+                    android:text="Change Password"
+                    android:textColor="#6dffbf"
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:id="@+id/settings_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email Address"
+                    android:textAlignment="center"
+                    android:textColor="#6bfff7"
+                    android:textColorHint="#52afaa" />
+
+                <EditText
+                    android:id="@+id/settings_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Old Password"
+                    android:inputType="textPassword"
+                    android:textAlignment="center"
+                    android:textColor="#6bfff7"
+                    android:textColorHint="#52afaa" />
+
+                <EditText
+                    android:id="@+id/settings_new_password"
+                    android:paddingTop="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="New Password"
+                    android:inputType="textPassword"
+                    android:textAlignment="center"
+                    android:textColor="#6bfff7"
+                    android:textColorHint="#52afaa" />
+                <EditText
+                    android:id="@+id/settings_repeat_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Repeat Password"
+                    android:inputType="textPassword"
+                    android:textAlignment="center"
+                    android:textColor="#6bfff7"
+                    android:textColorHint="#52afaa" />
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btn_change_pass"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:text="Change Password"
+                            android:textAllCaps="false" />
+
+                        <Button
+                            android:id="@+id/btn_change_email"
+                            android:layout_width="164dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:text="Change Email"
+                            android:textAllCaps="false" />
+                </LinearLayout>
+
+        </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

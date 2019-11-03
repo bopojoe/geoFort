@@ -1,18 +1,14 @@
 package com.example.geofort.login
 
 
-import android.app.Activity
+
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.geofort.MainActivity
 import com.example.geofort.R
-import com.example.geofort.activities.GeofortActivity
 import com.example.geofort.activities.GeofortListActivity
 import com.example.geofort.main.MainApp
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.AnkoLogger
@@ -82,6 +78,7 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
                 if (task.isSuccessful) {
 
                     val username = auth.currentUser!!.displayName
+
                     app = application as MainApp
                     toast("Welcome $username")
                     if (username != null) {

@@ -16,7 +16,7 @@ import java.lang.Thread.sleep
 
      var imageList = ArrayList<String>()
      var currentuser: String = ""
-     var username: String = currentuser
+     var username: String = ""
 
 
     //val placemarks = ArrayList<PlacemarkModel>()

@@ -190,6 +190,7 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
                     toast(R.string.add_emptyGeofort)
                 }
             }
+
         }
 
 

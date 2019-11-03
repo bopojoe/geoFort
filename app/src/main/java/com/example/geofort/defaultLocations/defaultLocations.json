@@ -1,0 +1,82 @@
+[
+  {
+    "date": "",
+    "description": "Rathnabart",
+    "id": -6083374858026796444,
+    "image": "@drawable/Ballybroony",
+    "imageList": [
+      "@drawable/Ballybroony"
+    ],
+    "lat": 53.5208297702936,
+    "lng": -9.18883703649044,
+    "note": "Notes About the Geofort \n Oval contour enclosure surrounding the summit of low-lying hilltop overlooking level terrain in all directions and the former lake known as Lough Dalla to the immediate NW.",
+    "title": "Ballybroony",
+    "userId": "defaultLocations",
+    "visited": false,
+    "zoom": 30.0
+  },
+  {
+    "date": "",
+    "description": "Kinlough, Cahermore",
+    "id": -6083374858026796123,
+    "image": "@drawable/BrodullaghSouth",
+    "imageList": [
+      "@drawable/BrodullaghSouth"
+    ],
+    "lat": 53.5208297702936,
+    "lng": -9.18883703649044,
+    "note": "Notes About the Geofort \n The outer enclosing element survives well for much of its circuit. The inner enclosing feature has been destroyed at the E, S and W.",
+    "title": "Brodullagh South",
+    "userId": "defaultLocations",
+    "visited": false,
+    "zoom": 30.0
+  },
+  {
+    "date": "",
+    "description": "Northern Ireland Sites",
+    "id": -6083374858026796456,
+    "image": "@drawable/CabraghFort",
+    "imageList": [
+      "@drawable/CabraghFort"
+    ],
+    "lat": 54.458091,
+    "lng": -7.585222,
+    "note": "Notes About the Geofort \n Circular contour fort on summit of hill with panoramic views from the summit.",
+    "title": "Cabragh Fort",
+    "userId": "defaultLocations",
+    "visited": false,
+    "zoom": 30.0
+  },
+  {
+    "date": "",
+    "description": "Tievecrom Hill, Carrickastickan",
+    "id": -6083374858026796478,
+    "image": "@drawable/Forkill",
+    "imageList": [
+      "@drawable/Forkill"
+    ],
+    "lat": 54.077165,
+    "lng": -6.436602,
+    "note": "Notes About the Geofort \n Univallate contour fort in commanding position on domed summit of Forkill Mountain with panoramic views from the summit and overlooking the modern town of Forkill to the immediate W.",
+    "title": "Forkill",
+    "userId": "defaultLocations",
+    "visited": false,
+    "zoom": 30.0
+  },
+  {
+    "date": "",
+    "description": "Cloonyconry More",
+    "id": -6083374858026796481,
+    "image": "@drawable/FoymoyleBeg",
+    "imageList": [
+      "@drawable/FoymoyleBeg"
+    ],
+    "lat": 52.791054,
+    "lng": -8.587249,
+    "note": "Notes About the Geofort \n Large Multiple enclosure surrounding the domed summit of hilltop. Positioned in commanding location at edge of upland terrain, overlooking the Broadford River and Glenomra River and an important mountain pass running E-W through",
+    "title": "Foymoyle Beg",
+    "userId": "defaultLocations",
+    "visited": false,
+    "zoom": 30.0
+  }
+]

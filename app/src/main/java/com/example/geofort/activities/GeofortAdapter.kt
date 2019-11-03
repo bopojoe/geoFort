@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.card_geofort.view.*
 import com.example.geofort.R
 import com.example.geofort.helpers.readImageFromPath
 import com.example.geofort.models.GeofortModel
+import org.jetbrains.anko.AnkoLogger
+import org.jetbrains.anko.info
 
 interface GeofortListener {
     fun onGeofortClick(geofort: GeofortModel)
@@ -39,12 +41,27 @@ class GeofortAdapter constructor(
 
     override fun getItemCount(): Int = geoforts.size
 
-    class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) ,AnkoLogger {
 
         fun bind(geofort: GeofortModel, listener: GeofortListener) {
             itemView.geofortTitle.text = geofort.title
             itemView.description.text = geofort.description
+            if(geofort.userId != "defaultLocations"){
             itemView.geofortImageList.setImageBitmap(readImageFromPath(itemView.context, geofort.image))
+            }else{
+                var imagename = geofort.image
+                info("james list view name $imagename")
+            var result = when(geofort.image) {
+
+                "R.drawable.ballybroony" -> R.drawable.ballybroony
+                "R.drawable.brodullaghsouth" -> R.drawable.brodullaghsouth
+                "R.drawable.cabraghfort" -> R.drawable.cabraghfort
+                "R.drawable.forkill" -> R.drawable.forkill
+                "R.drawable.foymoylebeg" -> R.drawable.foymoylebeg
+                else -> 0
+            }
+            itemView.geofortImageList.setImageResource(result)
+        }
             itemView.visited_card.isChecked = geofort.visited
             itemView.setOnClickListener { listener.onGeofortClick(geofort) }
         }

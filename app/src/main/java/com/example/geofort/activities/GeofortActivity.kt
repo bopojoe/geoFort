@@ -2,6 +2,11 @@ package com.example.geofort.activities
 
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -73,7 +78,21 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
             imageList = geofort.imageList
             for(image in imageList){
                 val imageView = ImageView(this)
+                if (geofort.userId != "defaultLocations"){
                 imageView.setImageBitmap(readImageFromPath(this, image))
+                }else{
+                    info("james imagename $image")
+                    var result = when(image) {
+                        "R.drawable.ballybroony" -> R.drawable.ballybroony
+                        "R.drawable.brodullaghsouth" -> R.drawable.brodullaghsouth
+                        "R.drawable.cabraghfort" -> R.drawable.cabraghfort
+                        "R.drawable.forkill" -> R.drawable.forkill
+                        "R.drawable.foymoylebeg" -> R.drawable.foymoylebeg
+                       else -> 0
+                    }
+                    info("result was $result")
+                    imageView.setImageResource(result)
+                }
                 val layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
                 layoutParams.setMargins(100,20,100,20)
                 imageView.layoutParams = layoutParams

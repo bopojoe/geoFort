@@ -66,11 +66,12 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
         val currentUser = auth.currentUser
         //updateUI(currentUser)
         if (currentUser != null) {
-            toast("you are already logged in as $currentUser")
-            val intent = Intent(this@LoginActivity, GeofortListActivity::class.java)
-            startActivity(intent)
+            val user = currentUser.displayName
+            toast("Welcome back $user,\nPlease enter your Password")
+            login_email.setText(currentUser.email)
+
         } else {
-            toast("Logged out")
+            toast("Welcome\n Please Login or Register")
         }
     }
 
@@ -82,7 +83,7 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
 
                     val username = auth.currentUser!!.displayName
                     app = application as MainApp
-                    toast("success $username")
+                    toast("Welcome $username")
                     if (username != null) {
                         app.currentuser = username
                         val intent = Intent(this@LoginActivity, GeofortListActivity::class.java)

@@ -14,6 +14,7 @@ import com.example.geofort.main.MainApp
 import com.example.geofort.models.GeofortModel
 import com.example.geofort.models.JSON_FILE
 import com.example.geofort.models.listType
+import com.example.geofort.settings.UserSettingsActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import org.jetbrains.anko.AnkoLogger

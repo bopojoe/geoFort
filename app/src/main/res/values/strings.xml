@@ -28,6 +28,7 @@
     <string name="button_addNote"> Add Note </string>
     <string name="hint_note">Add notes here</string>
     <string name="title_activity_user_settings">User Settings</string>
+    <string name="title_activity_change_email">Change Email</string>
 
 
 

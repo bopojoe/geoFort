@@ -193,7 +193,6 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
                     var imageList = app.imageList
                     imageList.add(data.getData().toString())
                     imageHolder.addView(imageView,numOfImage)
-
                     numOfImage += 1
 
                     geofort.image = data.getData().toString()

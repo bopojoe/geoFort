@@ -74,7 +74,8 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
             for(image in imageList){
                 val imageView = ImageView(this)
                 imageView.setImageBitmap(readImageFromPath(this, image))
-                val layoutParams = LayoutParams(200, 200)
+                val layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
+                layoutParams.setMargins(100,20,100,20)
                 imageView.layoutParams = layoutParams
                 val layout = findViewById<LinearLayout>(R.id.image_holder)
                 layout.addView(imageView)
@@ -95,8 +96,8 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
 
         btn_addNote.setOnClickListener {
             val textView = findViewById<TextView>(R.id.note)
-            var writing = textView.text
-            var newText = editNote.text.toString()
+            val writing = textView.text
+            val newText = editNote.text.toString()
             textView.text = "$writing \n $newText"
             editNote.text = null
 
@@ -143,6 +144,7 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
             }
             R.id.Add -> {
                 info("james add"+app.imageList )
+                app.imageList.addAll(geofort.imageList)
                 geofort.userId = app.currentuser
                 geofort.imageList = app.imageList
                 geofort.title = geofortTitle.text.toString()
@@ -163,6 +165,7 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
                         info("add Button Pressed: $geofort")
                     }
                     setResult(AppCompatActivity.RESULT_OK)
+                    app.imageList = ArrayList()
                     finish()
                 } else {
                     toast(R.string.add_emptyGeofort)
@@ -184,13 +187,12 @@ class GeofortActivity : AppCompatActivity(), AnkoLogger {
                     val imageString = data.getData().toString()
                     val imageView = ImageView(this)
                     imageView.setImageBitmap(readImageFromPath(this, imageString))
-                    val layoutParams = LayoutParams(200, 200)
-
+                    val layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
+                    layoutParams.setMargins(100,20,100,20)
                     imageView.layoutParams = layoutParams
                     var imageList = app.imageList
                     imageList.add(data.getData().toString())
                     imageHolder.addView(imageView,numOfImage)
-                    info("james "+ imageList)
                     numOfImage += 1
 
                     geofort.image = data.getData().toString()

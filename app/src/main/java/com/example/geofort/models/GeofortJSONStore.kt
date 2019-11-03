@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.AnkoLogger
 import com.example.geofort.helpers.*
 import kotlinx.android.synthetic.main.activity_geofort.*
+import org.jetbrains.anko.info
 import java.util.*
 
 val JSON_FILE = "geoforts.json"
@@ -56,6 +57,7 @@ class GeofortJSONStore : GeofortStore, AnkoLogger {
             foundGeofort.title = geofort.title
             foundGeofort.description = geofort.description
             foundGeofort.image = geofort.image
+            foundGeofort.imageList = geofort.imageList
             foundGeofort.note = geofort.note
             foundGeofort.date = geofort.date
             foundGeofort.visited = geofort.visited

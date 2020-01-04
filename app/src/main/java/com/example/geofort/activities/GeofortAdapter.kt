@@ -14,6 +14,10 @@ import com.example.geofort.helpers.readImageFromPath
 import com.example.geofort.models.GeofortModel
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import android.graphics.Bitmap
+import java.net.URL
+import com.squareup.picasso.Picasso;
+
 
 interface GeofortListener {
     fun onGeofortClick(geofort: GeofortModel)
@@ -47,7 +51,17 @@ class GeofortAdapter constructor(
             itemView.geofortTitle.text = geofort.title
             itemView.description.text = geofort.description
             if(geofort.userId != "defaultLocations"){
-            itemView.geofortImageList.setImageBitmap(readImageFromPath(itemView.context, geofort.image))
+                if(geofort.image.contains("http") ){
+                    Picasso.get().load(geofort.image).into(itemView.geofortImageList);
+                }else {
+
+                    itemView.geofortImageList.setImageBitmap(
+                        readImageFromPath(
+                            itemView.context,
+                            geofort.image
+                        )
+                    )
+                }
             }else{
                 var imagename = geofort.image
                 info("james list view name $imagename")

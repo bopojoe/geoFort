@@ -7,6 +7,7 @@ import kotlin.collections.ArrayList
 
 @Parcelize
 data class GeofortModel(
+                        var fbId: String = "",
                         var userId: String = "",
                         var id: Long = 0,
                         var title: String = "",
@@ -18,4 +19,5 @@ data class GeofortModel(
                         var date: String = "",
                         var lat : Double = 0.0,
                         var lng: Double = 0.0,
-                        var zoom: Float = 0f) : Parcelable
+                        var zoom: Float = 0f): Parcelable
+

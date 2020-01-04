@@ -30,24 +30,26 @@
         </com.google.android.material.appbar.AppBarLayout>
 
 
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/appBarLayout"
+            android:layout_marginTop="0dp"
             android:fillViewport="true">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/geofortLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/geofortTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_margin="8dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="16dp"
                     android:autofillHints=""
                     android:hint="@string/hint_geofortTitle"
                     android:inputType="text"
@@ -55,130 +57,170 @@
                     android:maxLines="1"
                     android:padding="8dp"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@+id/description"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/description"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="15dp"
                     android:hint="@string/hint_geofortDescription"
                     android:inputType="text"
                     android:maxLength="25"
                     android:maxLines="1"
                     android:padding="8dp"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="14sp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal">
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@+id/visited"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/geofortTitle" />
+
 
                 <CheckBox
                     android:id="@+id/visited"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Visited" />
+                    android:layout_marginBottom="26dp"
+                    android:text="Visited"
+                    app:layout_constraintBottom_toTopOf="@+id/geofortLocation"
+                    app:layout_constraintEnd_toStartOf="@+id/date"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/description" />
 
                 <EditText
                     android:id="@+id/date"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10" />
-
-            </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/geofortLocation"
-                        android:layout_width="177dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="15dp"
-                        android:background="@color/colorAccent"
-                        android:paddingLeft="15dp"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
-                        android:stateListAnimator="@null"
-                        android:text="@string/button_location"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="16sp" />
-
-                    <Button
-                        android:id="@+id/chooseImage"
-                        android:layout_width="177dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="15dp"
-                        android:background="@color/colorAccent"
-                        android:paddingTop="8dp"
-
-                        android:paddingBottom="8dp"
-                        android:stateListAnimator="@null"
-                        android:text="@string/button_addImage"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="16sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:orientation="vertical">
+                    android:ems="10"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/visited"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/visited" />
 
 
-                    <ScrollView
+                <Button
+                    android:id="@+id/geofortLocation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@color/colorAccent"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:stateListAnimator="@null"
+                    android:text="@string/button_location"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/chooseImage"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/visited" />
+
+                <Button
+                    android:id="@+id/chooseImage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginRight="12dp"
+
+                    android:background="@color/colorAccent"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:stateListAnimator="@null"
+                    android:text="@string/button_addImage"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/geofortLocation"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/geofortLocation" />
+
+
+                <ScrollView
+                    android:id="@+id/scrollView2"
+                    style="@android:style/Widget.ScrollView"
+                    android:layout_width="360dp"
+                    android:layout_height="167dp"
+                    android:layout_marginTop="28dp"
+                    android:fadeScrollbars="false"
+                    android:scrollbarStyle="outsideInset"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.49"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/geofortLocation">
+
+                    <LinearLayout
+                        android:id="@+id/image_holder"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        <LinearLayout
-                            android:id="@+id/image_holder"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical" />
-                    </ScrollView>
-                </LinearLayout>
-
-
-                <ImageView
-                    android:id="@+id/geofortImageList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                        <ImageView
+                            android:id="@+id/geofortImageList"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </ScrollView>
 
                 <EditText
                     android:id="@+id/editNote"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="@string/hint_note"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:inputType="textMultiLine" />
+                    android:hint="@string/hint_note"
+                    android:inputType="textMultiLine"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_addNote"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
                 <Button
                     android:id="@+id/btn_addNote"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="32dp"
                     android:background="@color/colorAccent"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:stateListAnimator="@null"
                     android:text="@string/button_addNote"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/note"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editNote" />
 
                 <TextView
                     android:id="@+id/note"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
                     android:ems="10"
+                    android:text="Notes About the Geofort"
                     android:textSize="19sp"
-                    android:text="Notes About the Geofort" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_addNote" />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </ScrollView>
 

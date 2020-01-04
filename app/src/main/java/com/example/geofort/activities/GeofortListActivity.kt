@@ -5,8 +5,6 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_geofort_list.*
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.startActivityForResult
 import com.example.geofort.R
 import com.example.geofort.helpers.read
 import com.example.geofort.login.LoginActivity
@@ -17,8 +15,7 @@ import com.example.geofort.models.listType
 import com.example.geofort.settings.UserSettingsActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
+import org.jetbrains.anko.*
 import org.json.JSONObject
 
 class GeofortListActivity : AppCompatActivity(), GeofortListener, AnkoLogger {
@@ -48,6 +45,7 @@ class GeofortListActivity : AppCompatActivity(), GeofortListener, AnkoLogger {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
+            R.id.item_map -> {info("james item_map"); startActivityForResult<GeofortMapsActivity>(0);}
             R.id.item_add -> startActivityForResult<GeofortActivity>(0)
 
             R.id.logout -> {auth.signOut(); app.currentuser = "";  val intentLogin= Intent(this@GeofortListActivity, LoginActivity::class.java)

@@ -4,10 +4,8 @@ import android.app.Application
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import com.example.geofort.R
-import com.example.geofort.models.GeofortJSONStore
-import com.example.geofort.models.GeofortMemStore
-import com.example.geofort.models.GeofortModel
-import com.example.geofort.models.GeofortStore
+import com.example.geofort.models.*
+import com.example.geofort.models.FirebaseStore
 import com.google.firebase.auth.FirebaseUser
 import java.lang.Thread.sleep
 
@@ -28,7 +26,7 @@ import java.lang.Thread.sleep
 
         setTheme(R.style.AppTheme)
         super.onCreate()
-        geoforts = GeofortJSONStore(applicationContext)
+        geoforts = FirebaseStore(applicationContext)
         info("Geofort started")
     }
 }

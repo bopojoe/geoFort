@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "95104700204-4qhbv0n9d2nnt3rqqd7d0pn3a0d2h6hb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.geofort",
+            "certificate_hash": "a921bdb92e7c5dd02da277bd600225d38361b18a"
+          }
+        },
+        {
           "client_id": "95104700204-7q8kt4rtfv55g6u2jvpmtuloi7rmupqu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

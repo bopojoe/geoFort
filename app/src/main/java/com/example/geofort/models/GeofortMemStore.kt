@@ -27,6 +27,15 @@ class GeofortMemStore : GeofortStore, AnkoLogger {
         return geoforts
     }
 
+    override fun clear() {
+        geoforts.clear()
+    }
+
+    override fun findById(id:Long) : GeofortModel? {
+        val foundPlacemark: GeofortModel? = geoforts.find { it.id == id }
+        return foundPlacemark
+    }
+
     override fun create(geofort: GeofortModel) {
         geofort.id = getId()
         geoforts.add(geofort)

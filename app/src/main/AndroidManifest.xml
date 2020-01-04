@@ -3,6 +3,7 @@
     package="com.example.geofort">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name=".main.MainApp"
@@ -43,6 +44,10 @@
         <activity
             android:name=".activities.MapActivity"
             android:label="@string/title_activity_map"></activity>
+
+        <activity
+            android:name=".activities.GeofortMapsActivity"
+            android:label="@string/title_geofort_activity_map"></activity>
 
         <activity android:name=".activities.GeofortActivity"
             android:theme="@style/AppTheme">

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.geofort.R
 import com.example.geofort.activities.GeofortListActivity
 import com.example.geofort.main.MainApp
+import com.example.geofort.models.FirebaseStore
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.AnkoLogger
@@ -18,7 +19,12 @@ import org.jetbrains.anko.toast
 class LoginActivity : AppCompatActivity(), AnkoLogger {
 
     private lateinit var auth: FirebaseAuth
+    var fireStore: FirebaseStore? = null
     lateinit var app: MainApp
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,10 +89,23 @@ class LoginActivity : AppCompatActivity(), AnkoLogger {
                     toast("Welcome $username")
                     if (username != null) {
                         app.currentuser = username
-                        val intent = Intent(this@LoginActivity, GeofortListActivity::class.java)
-                        startActivity(intent)
+                        fireStore = app.geoforts as FirebaseStore
+                        info("james before firestore check")
+                            if (fireStore != null) {
+                                info("james firestore check")
+                                fireStore!!.fetchGeoforts {
+                                    info("james fetch firestore check")
+                                    val intent =
+                                        Intent(this@LoginActivity, GeofortListActivity::class.java)
+                                    startActivity(intent)
 
-                    }
+                                }
+                            } else {
+                                val intent =
+                                    Intent(this@LoginActivity, GeofortListActivity::class.java)
+                                startActivity(intent)
+                            }
+                        }
 
                 } else {
                     Toast.makeText(
